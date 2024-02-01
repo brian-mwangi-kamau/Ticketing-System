@@ -16,7 +16,15 @@ The system features:
 <hr>
 <br>
 
-The system is accessible on web through **[this link](https://github.com/brian-mwangi-kamau/Ticketing-System)**.<br>
+The system is accessible on web through **[this link](https://ticketing101.pythonanywhere.com/)**.<br>
+Log in to the consoles using any of these credentials:<br>
+**Regular user:** <br>
+Username: mwangi,<br>
+password: Wkza2024?<br>
+
+**Staff user(s):** <br>
+Username: staff1/2/3/4/5,<br>
+password: Wkza2024?<br>
 ***NB: The site is tailored for desktop view only.***
 
 *Developed in January, 2024*<br>
