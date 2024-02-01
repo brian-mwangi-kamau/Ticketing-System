@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Console</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_dashboard.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    {% block content %}
+    <nav class="navbar">
+      <div class="logo"><a href="{% url 'dashboard' %}">TicketSwift</a></div>
+      <div class="dropdown" id="dropdownMenu">
+        <img class="profile" src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'img/profile.jpg' %}{% endif %}" alt="Profile Picture">
+        <i class="fa-solid fa-circle-chevron-down"></i>
+        <div class="dropdown-content">
+          <a href="{% url 'logout' %}">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content">
+      <div class="upper-section">
+        {% if total_tickets %}
+        <div class="sub-containers">
+          <div class="total-tickets">
+            <p>Total Tickets Created</p>
+            {% if total_tickets == 1%}
+                <p>{{ total_tickets }} Ticket</p>
+            {% else %}
+                <p>{{ total_tickets }} Tickets</p>
+            {% endif %}
+          </div>
+          <div class="open-tickets">
+            <p>Open Tickets</p>
+            {% if open_tickets == 1%}
+                <p>{{ open_tickets }} Ticket</p>
+            {% else %}
+                <p>{{ open_tickets }} Tickets</p>
+            {% endif %}
+          </div>
+          <div class="closed-tickets">
+            <p>Resolved Tickets</p>
+            {% if resolved_tickets == 1%}
+                <p>{{ resolved_tickets }} Ticket</p>
+            {% else %}
+                <p>{{ resolved_tickets }} Tickets</p>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <hr>
+
+      <div class="lower-section">
+        <div class="semi-columns">
+          <div class="column-left">
+            <canvas id="ticketsChart" width="400" height="400"></canvas>
+          </div>
+
+          <div class="column-right">
+            <div class="table-container">
+              <table id="ticketsTable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Assigned Tickets</th>
+                    <th>Open Tickets</th>
+                    <th>Resolved Tickets</th>
+                    <th>Overall Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for staff in staff_users %}
+                    <tr>
+                      <td>{{ staff.id }}</td>
+                      <td>{{ staff.first_name }}</td>
+                      <td>{{ staff.assigned_tickets }}</td>
+                      <td>{{ staff.open_tickets_staff }}</td>
+                      <td>{{ staff.resolved_tickets_staff }}</td>
+                      <td>{{ staff.overall_rating }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+
+    <script>
+    // script 1 - for the dropdown menu in the navbar
+    document.addEventListener("DOMContentLoaded", function () {
+      var dropdownToggle = document.getElementById("dropdownToggle");
+      var dropdownMenu = document.getElementById("dropdownMenu");
+
+      dropdownToggle.addEventListener("click", function () {
+        dropdownMenu.classList.toggle("show");
+      });
+
+      window.addEventListener("click", function (event) {
+        if (!event.target.matches("#dropdownToggle")) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
+            }
+          }
+        }
+      });
+    });
+
+
+    // script 2 - Simulating ticket count in a chart
+    var totalTickets = {{ total_tickets }};
+    var openTickets = {{ open_tickets }};
+    var resolvedTickets = {{ resolved_tickets }};
+
+    var ctx = document.getElementById('ticketsChart').getContext('2d');
+    var ticketsChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        /*labels: ['Total Tickets', 'Open Tickets', 'Resolved Tickets'],*/
+        datasets: [{
+          data: [totalTickets, openTickets, resolvedTickets],
+          backgroundColor: ['plum', 'lightskyblue', 'green'],
+        }]
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Tickets Overview'
+        }
+      }
+    });
+    </script>
+  </body>
+</html>

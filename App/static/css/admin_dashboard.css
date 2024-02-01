@@ -1,0 +1,199 @@
+@media (min-width: 600px) and (max-width: 3000px) {
+
+    body {
+        height: 100vh;
+        margin: 0;
+    }
+
+
+    .logo {
+        font-size: larger;
+        font-weight: 600;
+        padding: 30px 70px;
+        margin-right: 10%;
+    }
+
+
+    .logo a {
+        color: black;
+        text-decoration: none;
+    }
+
+
+    /* The navbar */
+    .dropdown {
+        display: inline-block;
+        position: relative;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+
+    .navbar {
+        box-shadow: 0 6px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1px 10px;
+        background-color: whitesmoke;
+
+        position: fixed;
+        width: 100%;
+        top: 0;
+    }
+
+
+    .navbar p {
+        font-size: 20;
+    }
+
+
+    .navbar i {
+        font-size: 20;
+        font-weight: bolder;
+        margin-right: 100px;
+    }
+
+
+    .profile {
+        margin-right: 1px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+
+    /* The content section of the right page */
+
+    /* The upper part of this content section */
+    .content .upper-section {
+        margin-top: 105px;
+    }
+
+
+    .upper-section .sub-containers {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 30px;
+    }
+
+
+    .upper-section .sub-containers p {
+        color: black;
+        font-size: larger;
+        font-weight: bold;
+    }
+
+
+    .upper-section .sub-containers i {
+        color: black;
+        font-size: 30;
+        font-weight: bold;
+        padding-left: 50px;
+    }
+
+
+    .upper-section .sub-containers .total-tickets {
+        background-color: plum;
+        padding: 10px 20px;
+        width: 250px;
+        height: 150px;
+        height: 150px;
+        border: none;
+        border-radius: 5px;
+    }
+
+
+    .upper-section .sub-containers .open-tickets {
+        background-color: lightskyblue;
+        padding: 10px 20px;
+        width: 250px;
+        border: none;
+        border-radius: 5px;
+    }
+
+
+    .upper-section .sub-containers .closed-tickets {
+        background-color: green;
+        padding: 10px 20px;
+        width: 250px;
+        border: none;
+        border-radius: 5px;
+    }
+
+
+    .content hr {
+        color: green;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+
+
+    /* The lower part of this content section */
+    .semi-columns {
+        display: flex;
+        position: relative;
+    }
+
+    /* The column-left column */
+    .lower-section .semi-columns .column-left {
+        background-color:whitesmoke;
+        width: 25%;
+        margin-left: 10%;
+    }
+
+
+    /* The column-right column */
+    .semi-columns .column-right {
+        background-color: whitesmoke;
+        width: 75%;
+        margin-left: 3%;
+        margin-right: 10%;
+        overflow-y: auto;
+    }
+
+
+    .table-container {
+        margin: 20px;
+    }
+
+    #ticketsTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    #ticketsTable th, #ticketsTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+}

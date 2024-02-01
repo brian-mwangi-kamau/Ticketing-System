@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>New Ticket</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/new_ticket.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        {% block content %}
+        <div class="columns">
+            <div class="left-column">
+                <div class="logo"><a href="{% url 'dashboard' %}">TicketSwift</a></div>
+                <div class="link">
+                    <ul>
+                        <li><a href="{% url 'dashboard' %}">Abort creation</a></li>
+                    </ul>
+                </div>
+
+                <div class="ticket-links">
+                    <ul class="column-links">
+                        <li><a href="">How to?</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <nav class="navbar">
+                    <p class="greetings" id="dropdownToggle"><i class="fa-solid fa-bars"></i>Welcome</p>
+                    <div class="dropdown" id="dropdownMenu">
+                     <img class="profile" src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'img/profile.jpg' %}{% endif %}" alt="Profile Picture">
+                      <i class="fa-solid fa-circle-chevron-down"></i>
+                      <div class="dropdown-content">
+                        <a href="{% url 'profile' %}">My Profile</a>
+                        <a href="{% url 'logout' %}">Logout</a>
+                      </div>
+                    </div>
+                </nav>
+
+                <div class="content">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="input-fields">
+                            <div class="title-field">
+                                <label for="title">
+                                    Title:
+                                    <input type="text" name="title" id="title">
+                                </label>
+                            </div>
+                            <div class="message-field">
+                                <label for="message">
+                                    Message:
+                                    <input type="text" name="message" id="message">
+                                </label>
+                            </div>
+                            <div class="image-field">
+                                <label for="image">
+                                    Image:
+                                    <input type="file" name="image" id="image">
+                                </label>
+                            </div>
+                            <div class="priority-field">
+                                <label for="priority">
+                                    Priority:
+                                    <select name="priority" id="priority">
+                                        {% for choice in form.priority.field.choices %}
+                                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="category-field">
+                                <label for="category">
+                                    Category:
+                                    <select name="category" id="category">
+                                        {% for choice in form.category.field.choices %}
+                                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn" type="submit">Publish Ticket</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>

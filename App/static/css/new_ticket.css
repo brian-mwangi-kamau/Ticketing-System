@@ -1,0 +1,240 @@
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+
+.columns {
+    display: flex;
+    position: relative;
+}
+
+
+.left-column,
+.right-column {
+    box-sizing: border-box;
+}
+
+
+.left-column {
+    border-right: 1px solid #ccc;
+    padding-right: 10px;
+
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* The left column */
+.columns .left-column {
+    background-color:whitesmoke;
+    width: 15%;
+}
+
+
+.columns .left-column .logo {
+    font-size: larger;
+    font-weight: 600;
+    padding: 30px 70px;
+}
+
+
+.left-column .logo a {
+    color: black;
+    text-decoration: none;
+}
+
+
+.link ul {
+    list-style: none;
+}
+
+
+.left-column .link li {
+    margin-top: 28px;
+    margin-bottom: 80px;
+}
+
+
+.left-column .link a {
+    background-color: rgb(247, 192, 247);
+    font-size: large;
+    color: black;
+    font-weight: 400;
+    padding: 20px 30px;
+    text-decoration: none;
+    border: none;
+    border-radius: 15px;
+}
+
+
+
+.left-column .link a:hover {
+    background-color: rgb(247, 192, 247);
+    border-radius: 15px;
+    border: 2px solid purple;
+}
+
+
+.ticket-links ul {
+    list-style: none;
+}
+
+
+.left-column .ticket-links li {
+    margin-bottom: 40px;
+}
+
+
+.left-column .ticket-links a {
+    font-size: large;
+    color: black;
+    font-weight: 400;
+    padding: 20px 30px;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+
+.left-column .ticket-links a:hover {
+    background-color: rgb(247, 192, 247);
+    border-radius: 15px;
+    border: 2px solid purple;
+}
+
+
+/* The right column */
+.columns .right-column {
+    background-color: whitesmoke;
+    width: 85%;
+
+    margin-left: 15%;
+    overflow-y: auto;
+}
+
+
+/* The navbar */
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.navbar {
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.right-column .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: whitesmoke;
+
+    position: fixed;
+    width: 85%;
+}
+
+
+.navbar p {
+    font-size: 20;
+}
+
+
+.navbar i {
+    font-size: 20;
+    font-weight: bolder;
+    margin-right: 100px;
+}
+
+
+.greetings {
+    margin-right: 10%;
+}
+
+
+.profile {
+    margin-right: 1px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* The content section of the right page */
+
+.right-column .content {
+    margin-top: 105px;
+}
+
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.input-fields {
+  margin-bottom: 20px;
+}
+
+.title-field,
+.message-field,
+.image-field,
+.priority-field,
+.category-field {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px; 
+}
+
+input[type="text"],
+select,
+input[type="file"] {
+    width: 100%; 
+    padding: 8px; 
+    box-sizing: border-box; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    appearance: none; 
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
