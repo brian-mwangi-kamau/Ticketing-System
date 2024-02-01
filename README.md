@@ -19,11 +19,11 @@ The system features:
 The system is accessible on web through **[this link](https://ticketing101.pythonanywhere.com/)**.<br>
 Log in to the consoles using any of these credentials:<br>
 **Regular user:** <br>
-Username: mwangi,<br>
+Email: fakeemail,<br>
 password: Wkza2024?<br>
 
 **Staff user(s):** <br>
-Username: staff1/2/3/4/5,<br>
+Email: staff1/2/3/4/5@gmail.com,<br>
 password: Wkza2024?<br>
 ***NB: The site is tailored for desktop view only.***
 
